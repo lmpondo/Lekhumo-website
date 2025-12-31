@@ -3,195 +3,438 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lekhuno Logistics</title>
+  <title>Lekhuno Logistics | Engineered to Move</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Google Fonts - Modern & Professional -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --primary: #0b5ed7;
+      --primary-dark: #084298;
+      --secondary: #10b981;
       --dark: #0f172a;
       --light: #ffffff;
       --muted: #64748b;
+      --gray-bg: #f8fafc;
+      --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --whatsapp: #25D366;
+      --whatsapp-dark: #1ebe5d;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Poppins', Arial, sans-serif;
       color: var(--dark);
-      background: #f8fafc;
-      line-height: 1.6;
+      background: var(--gray-bg);
+      line-height: 1.7;
     }
 
+    h2 {
+      text-align: center;
+      font-size: 2.4rem;
+      margin-bottom: 40px;
+      color: var(--dark);
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      display: block;
+      margin: 15px auto 0;
+      border-radius: 2px;
+    }
+
+    /* HEADER */
     header {
-      background: linear-gradient(120deg, var(--primary), #084298);
+      background: linear-gradient(120deg, var(--primary), var(--primary-dark));
       color: white;
-      padding: 60px 20px;
+      padding: 60px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom no-repeat;
+      background-size: cover;
+    }
+
+    .header-bar {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header-bar img {
+      max-width: 160px;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+    }
+
+    .header-center {
       text-align: center;
     }
 
-    header img {
-      max-width: 120px;
-      margin-bottom: 15px;
-    }
-
-    header h1 {
-      margin: 0 0 10px;
-      font-size: 2.5rem;
-    }
-
-    header p {
+    .header-center h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
       margin: 0;
-      font-size: 1.1rem;
+      letter-spacing: 1px;
     }
 
+    .header-center p {
+      font-size: 1.4rem;
+      margin-top: 10px;
+      opacity: 0.95;
+      font-weight: 500;
+    }
+
+    /* SECTIONS */
     section {
-      padding: 50px 20px;
-      max-width: 1100px;
+      padding: 80px 20px;
+      max-width: 1200px;
       margin: auto;
     }
 
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-    }
-
-    .contact {
+    .services, .values {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 30px;
     }
 
-    form label {
+    .card {
+      background: white;
+      padding: 35px 25px;
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+
+    .value-icon {
+      font-size: 3.2rem;
+      color: var(--primary);
+      margin-bottom: 20px;
       display: block;
-      margin-top: 10px;
-      font-weight: bold;
     }
 
-    form input, form textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 6px;
-      border: 1px solid #cbd5e1;
-      font-size: 0.95rem;
+    .card h3 {
+      font-size: 1.5rem;
+      margin: 15px 0 10px;
+      color: var(--dark);
     }
 
+    .muted {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* Mission & Vision - Special Cards */
+    .highlight-card {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .highlight-card .muted {
+      color: rgba(255,255,255,0.9);
+      font-size: 1.1rem;
+    }
+
+    /* Services Icons */
+    .service-icon {
+      font-size: 3rem;
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+
+    /* Contact */
+    .contact {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .contact .card {
+      padding: 40px;
+    }
+
+    form input,
     form textarea {
-      resize: vertical;
-      min-height: 120px;
+      width: 100%;
+      padding: 14px;
+      margin-top: 8px;
+      border-radius: 10px;
+      border: 1px solid #cbd5e1;
+      font-size: 1rem;
+      transition: border 0.3s ease;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(11,94,215,0.15);
     }
 
     form button {
-      margin-top: 15px;
-      padding: 12px;
+      margin-top: 20px;
+      padding: 15px;
       width: 100%;
       background: var(--primary);
       color: white;
       border: none;
-      border-radius: 6px;
-      font-size: 1rem;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
 
     form button:hover {
-      background: #084298;
+      background: var(--primary-dark);
     }
 
     footer {
-      background: #020617;
-      color: #e5e7eb;
+      background: var(--dark);
+      color: #e2e8f0;
       text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
+      padding: 30px;
+      font-size: 0.95rem;
     }
 
-    .muted { color: var(--muted); }
-    .success { color: green; margin-top: 10px; }
+    .success {
+      color: var(--secondary);
+      font-weight: 600;
+      margin-top: 15px;
+    }
+
+    /* WhatsApp Floating Buttons */
+    .whatsapp-container {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 1000;
+    }
+
+    .whatsapp-btn {
+      width: 62px;
+      height: 62px;
+      background: var(--whatsapp);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      background: var(--whatsapp-dark);
+      transform: scale(1.15);
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
+      .header-center h1 {
+        font-size: 2.8rem;
+      }
+      .header-center p {
+        font-size: 1.2rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      section {
+        padding: 60px 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header-bar {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .header-bar img {
+        max-width: 130px;
+        margin: auto;
+      }
+      .header-center h1 {
+        font-size: 2.4rem;
+      }
+    }
   </style>
 </head>
 
 <body>
 
 <header>
-  <div class="header-content">
-    <img src="ChatGPT Image Dec 29, 2025, 04_31_47 PM.png" alt="Lekhuno Logistics Logo" />
+  <div class="header-bar">
+    <img src="ChatGPT Image Dec 29, 2025, 04_31_47 PM.png" alt="Lekhuno Logistics Logo">
 
-    <div class="header-text">
+    <div class="header-center">
       <h1>Lekhuno Logistics</h1>
       <p>Engineered to Move</p>
     </div>
+
+    <img src="ChatGPT Image Dec 29, 2025, 04_31_47 PM.png" alt="Lekhuno Logistics Logo">
   </div>
 </header>
 
-  <section>
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="card">
-        <h3>Transportation</h3>
-        <p class="muted">Safe and efficient transportation across South Africa.</p>
-      </div>
-      <div class="card">
-        <h3>Warehousing</h3>
-        <p class="muted">Secure storage and inventory management solutions.</p>
-      </div>
-      <div class="card">
-        <h3>Express Delivery</h3>
-        <p class="muted">Time-critical shipments delivered on schedule.</p>
-      </div>
+<!-- Mission -->
+<section>
+  <h2>Our Mission</h2>
+  <div class="card highlight-card">
+    <p class="muted">
+      Our mission is to deliver reliable, efficient, and innovative logistics solutions that enable businesses to move goods safely and on time. We are committed to excellence, customer satisfaction, and long-term partnerships built on integrity and precision.
+    </p>
+  </div>
+</section>
+
+<!-- Vision -->
+<section>
+  <h2>Our Vision</h2>
+  <div class="card highlight-card">
+    <p class="muted">
+      To become the leading logistics partner in South Africa, recognized for operational excellence, sustainable practices, and technology-driven supply chain solutions that empower growth and economic development.
+    </p>
+  </div>
+</section>
+
+<!-- Core Values -->
+<section>
+  <h2>Our Core Values</h2>
+  <div class="values">
+    <div class="card">
+      <i class="fas fa-handshake value-icon" aria-hidden="true"></i>
+      <h3>Integrity</h3>
+      <p class="muted">Honest, ethical, and transparent in all our dealings.</p>
     </div>
-  </section>
-
-  <section>
-    <h2>Contact Us</h2>
-    <div class="contact">
-      <div class="card">
-        <h3>Get in Touch</h3>
-        <p><strong>Phone:</strong> +27 65 880 0843</p>
-        <p><strong>Email:</strong> info@lekhunologistics.co.za</p>
-        <p><strong>Address:</strong> Nigel, South Africa</p>
-        <p class="muted">We respond within 24 hours.</p>
-      </div>
-
-      <form id="contactForm">
-        <h3>Send Us a Message</h3>
-
-        <label>Name</label>
-        <input type="text" required />
-
-        <label>Email</label>
-        <input type="email" required />
-
-        <label>Message</label>
-        <textarea required></textarea>
-
-        <button type="submit">Send Message</button>
-        <div id="formStatus"></div>
-      </form>
+    <div class="card">
+      <i class="fas fa-truck value-icon" aria-hidden="true"></i>
+      <h3>Reliability</h3>
+      <p class="muted">Delivering on promises with consistent, dependable service.</p>
     </div>
-  </section>
+    <div class="card">
+      <i class="fas fa-users value-icon" aria-hidden="true"></i>
+      <h3>Customer Focus</h3>
+      <p class="muted">Placing client needs at the heart of every decision.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-tachometer-alt value-icon" aria-hidden="true"></i>
+      <h3>Efficiency</h3>
+      <p class="muted">Optimized processes for timely, cost-effective solutions.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-shield-alt value-icon" aria-hidden="true"></i>
+      <h3>Safety</h3>
+      <p class="muted">Prioritizing the well-being of people, cargo, and communities.</p>
+    </div>
+  </div>
+</section>
 
-  <footer>
-    © 2025 Lekhuno Logistics. All rights reserved.
-  </footer>
+<!-- Services -->
+<section>
+  <h2>Our Services</h2>
+  <div class="services">
+    <div class="card">
+      <i class="fas fa-truck-loading service-icon" aria-hidden="true"></i>
+      <h3>Transportation</h3>
+      <p class="muted">Safe and efficient road freight across South Africa.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-warehouse service-icon" aria-hidden="true"></i>
+      <h3>Warehousing</h3>
+      <p class="muted">Secure storage and advanced inventory management.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-shipping-fast service-icon" aria-hidden="true"></i>
+      <h3>Express Delivery</h3>
+      <p class="muted">Time-critical shipments delivered with precision.</p>
+    </div>
+  </div>
+</section>
 
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      document.getElementById('formStatus').textContent =
-        'Thank you! Your message has been sent.';
-      document.getElementById('formStatus').className = 'success';
-      this.reset();
-    });
-  </script>
+<!-- Contact -->
+<section>
+  <h2>Contact Us</h2>
+  <div class="contact">
+    <div class="card">
+      <h3>Get in Touch</h3>
+      <p><strong>Phone:</strong> +27 65 880 0843</p>
+      <p><strong>Email:</strong> info@lekhunologistics.co.za</p>
+      <p><strong>Address:</strong> Nigel, Gauteng, South Africa</p>
+      <p class="muted"><em>We respond within 24 hours.</em></p>
+    </div>
+
+    <form id="contactForm">
+      <h3>Send Us a Message</h3>
+      <label>Name</label>
+      <input type="text" placeholder="Your Name" required />
+
+      <label>Email</label>
+      <input type="email" placeholder="your@email.com" required />
+
+      <label>Message</label>
+      <textarea placeholder="How can we assist you?" required></textarea>
+
+      <button type="submit">Send Message</button>
+      <div id="formStatus"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  © 2026 Lekhuno Logistics. All rights reserved.
+</footer>
+
+<!-- WhatsApp Floating Buttons -->
+<div class="whatsapp-container">
+  <a class="whatsapp-btn" href="https://wa.me/27658800843?text=Hello%20Lekhuno%20Logistics%2C%20I%20need%20assistance." target="_blank" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a class="whatsapp-btn" href="https://wa.me/27658800843" target="_blank" aria-label="Call on WhatsApp">
+    <i class="fas fa-phone"></i>
+  </a>
+</div>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('formStatus').textContent = 'Thank you! Your message has been sent successfully.';
+    document.getElementById('formStatus').className = 'success';
+    this.reset();
+  });
+</script>
 
 </body>
 </html>
